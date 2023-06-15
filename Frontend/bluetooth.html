@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Comunicación Bluetooth</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+    }
+    
+    h1 {
+      color: #333;
+    }
+    
+    #sendDataButton {
+      background-color: #4CAF50;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin-top: 20px;
+      cursor: pointer;
+    }
+    
+    #deviceList {
+      margin-top: 20px;
+      display: none;
+    }
+    
+    #devices {
+      list-style-type: none;
+      padding: 0;
+    }
+    
+    #devices li {
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Comunicación Bluetooth</h1>
+  <button id="sendDataButton">Buscar dispositivos Bluetooth</button>
+  
+  <div id="deviceList">
+    <h2>Dispositivos Bluetooth</h2>
+    <ul id="devices"></ul>
+  </div>
+  
+  <script>
+    // Función para buscar dispositivos Bluetooth
+    function searchBluetoothDevices() {
+      // Verificar si el navegador es compatible con la API de Bluetooth
+      if ('bluetooth' in navigator) {
+        navigator.bluetooth.requestDevice({ acceptAllDevices: true })
+        .then(device => {
+          // Agregar el dispositivo a la lista
+          var deviceList = document.getElementById('devices');
+          var deviceItem = document.createElement('li');
+          deviceItem.textContent = device.name;
+          deviceList.appendChild(deviceItem);
+        })
+        .catch(error => {
+          console.error('Error al buscar dispositivos Bluetooth:', error);
+        });
+      } else {
+        alert('Tu navegador no es compatible con la API de Bluetooth.');
+      }
+    }
+    
+    // Asignar la función de búsqueda de dispositivos Bluetooth al evento click del botón
+    document.getElementById('sendDataButton').addEventListener('click', function() {
+      // Mostrar la lista de dispositivos y ocultar el botón
+      document.getElementById('deviceList').style.display = 'block';
+      document.getElementById('sendDataButton').style.display = 'none';
+      
+      // Llamar a la función para buscar dispositivos Bluetooth
+      searchBluetoothDevices();
+    });
+  </script>
+</body>
+</html>
+

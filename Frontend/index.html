@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Login</h1>
+    <div id="loginContainer">
+      <h2>Iniciar sesión</h2>
+      <form id="loginForm">
+        <input type="email" name="email" placeholder="Correo electrónico" required>
+        <input type="password" name="password" placeholder="Contraseña" required>
+        <button type="submit">Iniciar sesión</button>
+      </form>
+      <div class="message">
+        ¿No tienes una cuenta? <a href="#" id="registerLink">Regístrate</a>
+      </div>
+    </div>
+    <div id="registerContainer" style="display: none;">
+      <h2>Registro</h2>
+      <form id="registerForm">
+        <input type="text" name="name" placeholder="Nombre" required>
+        <input type="email" name="email" placeholder="Correo electrónico" required>
+        <input type="password" name="password" placeholder="Contraseña" required>
+        <button type="submit">Registrarse</button>
+      </form>
+      <div class="message">
+        ¿Ya tienes una cuenta? <a href="#" id="loginLink">Inicia sesión</a>
+      </div>
+    </div>
+    <div id="successMessage" style="display: none;" class="message">
+      ¡Registro exitoso! Ahora puedes <a href="#" id="backToLoginLink">iniciar sesión</a>.
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
